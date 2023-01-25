@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Flights</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="menu-container">
+                <div class="left-menu">
+                    <div class="menu-item">
+                        <div class="menu-icon">&#9662;</div>
+                        <div class="menu-label">Menu</div>
+                    </div>
+                    <div class="sub-menu">
+                      <ul id="sub-menu-items">
+                        <li id="sub-menu-item"><a class="nostyle" href="index.html">Home</a><br></li>
+                        <li id="sub-menu-item"><a class="nostyle" href="contact.html">Contact Us</a></li>
+                      </ul>
+                    </div>
+                </div> 
+                <div id="header"><a href="index.html" class="nostyle">MyFlights.com</a></div>
+            </div>
+            </nav>
+        </header>
+        <div class="table-container">
+          <table id="tbl">
+              <tr>
+                <th>Flight Number</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+              </tr>
+              <tr>
+                <td>AA123</td>
+                <td>New York</td>
+                <td>Los Angeles</td>
+                <td>9:00 AM</td>
+                <td>12:00 PM</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>AA456</td>
+                <td>Los Angeles</td>
+                <td>New York</td>
+                <td>1:00 PM</td>
+                <td>4:00 PM</td>
+                <td>$300</td>
+              </tr>
+              <tr>
+                <td>AA789</td>
+                <td>Chicago</td>
+                <td>Miami</td>
+                <td>5:00 PM</td>
+                <td>8:00 PM</td>
+                <td>$350</td>
+              </tr>
+              <tr>
+                <td>AA654</td>
+                <td>Miami</td>
+                <td>Chicago</td>
+                <td>6:00 PM</td>
+                <td>9:00 PM</td>
+                <td>$400</td>
+              </tr>
+              <tr>
+                <td>AA354</td>
+                <td>Rochester</td>
+                <td>New York</td>
+                <td>2:00 PM</td>
+                <td>4:00 PM</td>
+                <td>$450</td>
+              </tr>
+              <tr>
+                <td>AA123</td>
+                <td>New York</td>
+                <td>Los Angeles</td>
+                <td>9:00 AM</td>
+                <td>12:00 PM</td>
+                <td>$250</td>
+              </tr>
+              <tr>
+                <td>AA456</td>
+                <td>Los Angeles</td>
+                <td>New York</td>
+                <td>1:00 PM</td>
+                <td>4:00 PM</td>
+                <td>$300</td>
+              </tr>
+            </table>
+          </div>
+        <div id="search-container">
+            <button id="search-button" class="btn btn-primary">Search your Flight</button>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <form id="frm">
+                    <div class="form-group">
+                      <label for="destination">Destination</label>
+                      <input type="text" class="form-control" id="destination" placeholder="Enter destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Origin</label>
+                        <input type="text" class="form-control" id="origin" placeholder="Enter origin">
+                      </div>
+                    <div class="form-group">
+                      <label for="depart">Depart</label>
+                      <input type="date" class="form-control" id="depart">
+                    </div>
+                    <div class="form-group">
+                      <label for="return">Return</label>
+                      <input type="date" class="form-control" id="return">
+                    </div>
+                    <div class="form-group">
+                      <label for="guests">Guests</label>
+                      <select class="form-control" id="guests">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <script>
+                        const menuItems = document.querySelectorAll('.menu-item');
+            const searchButton = document.getElementById("search-button");
+            const modal = document.getElementById("modal");
+            const closeModal = document.querySelector(".close-modal");
+
+            searchButton.addEventListener("click", function() {
+                modal.style.display = "block";
+            });
+            closeModal.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+            window.addEventListener("click", function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                this.classList.toggle('active');
+             });
+            });
+
+            document.getElementById("frm").addEventListener("submit", function(event) {
+             event.preventDefault();
+            var destination = document.getElementById("destination").value;
+            var checkin = document.getElementById("depart").value;
+            var checkout = document.getElementById("return").value;
+            var guests = document.getElementById("guests").value;
+            alert("Searching for flight to " + destination + "from" + origin + " for " + guests + " guests, depart: " + checkin + ", return: " + checkout);
+            });
+        </script>
+        <iframe src="footer.html" frameborder="0" position="fixed" bottom="0px"></iframe>
+    </body>
+</html>
+
